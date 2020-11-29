@@ -174,5 +174,36 @@ https://github.com/trco/django-bootstrap-modal-forms
 
         return this;
     };
+    
+$.fn.modalFormOn = function (options) {
+        // Default settings
+        var defaults = {
+            modalID: "#modal",
+            modalContent: ".modal-content",
+            modalForm: ".modal-content form",
+            formURL: null,
+            errorClass: ".invalid",
+            submitBtn: ".submit-btn",
+            asyncUpdate: false,
+            asyncSettings: {
+                closeOnSubmit: false,
+                successMessage: null,
+                dataUrl: null,
+                dataElementId: null,
+                dataKey: null,
+                addModalFormFunction: null
+            }
+        };
+
+        // Extend default settings with provided options
+        var settings = $.extend(defaults, options);
+
+        this.each(function () {
+                // Instantiate new form in modal immediately.
+                modalForm(settings);
+        });
+
+        return this;
+    };
 
 }(jQuery));
